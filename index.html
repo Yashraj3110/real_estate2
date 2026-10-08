@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahvausnav Properties | Premium Real Estate in Kota, Rajasthan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { 800: '#111827', 900: '#0B0F19' },
+                        primary: '#1D4ED8',
+                        gold: { 500: '#C9A227', 600: '#A6841E', 400: '#E2BC3F' },
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .hero-bg {
+            background: linear-gradient(rgba(17, 24, 39, 0.75), rgba(17, 24, 39, 0.65)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .animate-fade { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-surface text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage('home')">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-blue-900 flex items-center justify-center text-gold-500 shadow-md">
+                        <i class="fa-solid fa-city text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold font-serif tracking-tight text-navy-800 block">Mahvausnav</span>
+                        <span class="text-xs font-semibold tracking-widest text-gold-600 uppercase">Properties • Kota</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-8">
+                    <button onclick="switchPage('home')" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-primary bg-blue-50 transition" data-target="home">Home</button>
+                    <button onclick="switchPage('properties')" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 transition" data-target="properties">Properties</button>
+                    <button onclick="switchPage('services')" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 transition" data-target="services">Services</button>
+                    <button onclick="switchPage('about')" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 transition" data-target="about">About Us</button>
+                    <button onclick="switchPage('contact')" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 transition" data-target="contact">Contact Us</button>
+                </nav>
+
+                <!-- Action Button & Mobile Toggle -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="openEnquiryModal('General Listing Inquiry')" class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-500 shadow-md transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-plus-circle mr-2"></i> List Your Property
+                    </button>
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-600 hover:text-primary hover:bg-gray-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-4 space-y-1 animate-fade">
+            <button onclick="switchPage('home'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-primary bg-blue-50">Home</button>
+            <button onclick="switchPage('properties'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Properties</button>
+            <button onclick="switchPage('services'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Services</button>
+            <button onclick="switchPage('about'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">About Us</button>
+            <button onclick="switchPage('contact'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Contact Us</button>
+            <div class="pt-2">
+                <button onclick="openEnquiryModal('General Listing Inquiry'); toggleMobileMenu();" class="w-full text-center px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-gold-500 hover:bg-gold-600 shadow">
+                    List Your Property
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- ================= HOME PAGE ================= -->
+        <section id="page-home" class="page-view animate-fade">
+            <!-- Hero Section -->
+            <div class="hero-bg text-white py-24 lg:py-32 relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gold-500/20 text-gold-400 border border-gold-500/30 mb-6 backdrop-blur-sm">
+                        <i class="fa-solid fa-award mr-2"></i> Kota's Most Trusted Real Estate Partner
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-serif tracking-tight mb-6 leading-tight">
+                        Find the Right Property <br><span class="text-gold-400">in Kota, Rajasthan</span>
+                    </h1>
+                    <p class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-300 mb-10">
+                        Explore verified residential plots, luxurious villas, coaching hub student apartments, and commercial spaces in Talwandi, Kunhari, Vigyan Nagar & more.
+                    </p>
+
+                    <!-- Quick Search Box -->
+                    <div class="max-w-4xl mx-auto bg-white/10 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-white/20 shadow-2xl">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 text-left mb-1 ml-1">Looking For</label>
+                                <select id="hero-purpose" class="w-full bg-white text-gray-800 rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-gold-500 outline-none">
+                                    <option value="">All Purposes</option>
+                                    <option value="Buy">Buy Property</option>
+                                    <option value="Rent">Rent Property</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 text-left mb-1 ml-1">Location in Kota</label>
+                                <select id="hero-location" class="w-full bg-white text-gray-800 rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-gold-500 outline-none">
+                                    <option value="">All Locations</option>
+                                    <option value="Talwandi">Talwandi</option>
+                                    <option value="Kunhari">Kunhari</option>
+                                    <option value="Mahaveer Nagar">Mahaveer Nagar</option>
+                                    <option value="Vigyan Nagar">Vigyan Nagar</option>
+                                    <option value="Dadabari">Dadabari</option>
+                                    <option value="Landmark City">Landmark City</option>
+                                    <option value="Jawahar Nagar">Jawahar Nagar</option>
+                                    <option value="Rajeev Gandhi Nagar">Rajeev Gandhi Nagar</option>
+                                </select>
+                            </div>
+                            <div class="flex items-end">
+                                <button onclick="executeHeroSearch()" class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-500 text-navy-900 font-bold py-3 px-6 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <span>Search Properties</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Property Categories -->
+            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold font-serif text-navy-800">Explore Property Categories</h2>
+                    <p class="text-gray-600 mt-2">Find the ideal asset tailored to your requirements in Kota</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div onclick="filterByCategory('Residential')" class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 cursor-pointer transition transform hover:-translate-y-1 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-2xl flex items-center justify-center text-primary text-2xl group-hover:bg-primary group-hover:text-white transition">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-navy-800 mb-1">Residential</h3>
+                        <p class="text-xs text-gray-500">Villas, Apartments, Builder Floors</p>
+                    </div>
+                    <div onclick="filterByCategory('Commercial')" class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 cursor-pointer transition transform hover:-translate-y-1 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-amber-50 rounded-2xl flex items-center justify-center text-gold-600 text-2xl group-hover:bg-gold-500 group-hover:text-white transition">
+                            <i class="fa-solid fa-store"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-navy-800 mb-1">Commercial</h3>
+                        <p class="text-xs text-gray-500">Showrooms, Retail & Corporate Offices</p>
+                    </div>
+                    <div onclick="filterByCategory('Plots')" class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 cursor-pointer transition transform hover:-translate-y-1 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 text-2xl group-hover:bg-emerald-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-navy-800 mb-1">Plots & Land</h3>
+                        <p class="text-xs text-gray-500">UIT & JDA Approved Residential Plots</p>
+                    </div>
+                    <div onclick="filterByCategory('Rental')" class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 cursor-pointer transition transform hover:-translate-y-1 text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 text-2xl group-hover:bg-purple-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-navy-800 mb-1">Rental Properties</h3>
+                        <p class="text-xs text-gray-500">PG, Hostels & Family Rental Homes</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Location Filter Buttons -->
+            <section class="py-8 bg-gray-100/70 border-y border-gray-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">Popular Localities in Kota</h3>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <button onclick="filterByLocationQuick('Talwandi')" class="px-4 py-2 rounded-full text-xs font-semibold bg-white text-gray-700 hover:bg-primary hover:text-white shadow-sm border border-gray-200 transition">Talwandi</button>
+                        <button onclick="filterByLocationQuick('Kunhari')" class="px-4 py-2 rounded-full text-xs font-semibold bg-white text-gray-700 hover:bg-primary hover:text-white shadow-sm border border-gray-200 transition">Kunhari</button>
+                        <button onclick="filterByLocationQuick('Mahaveer Nagar')" class="px-4 py-2 rounded-full text-xs font-semibold bg-white text-gray-700 hover:bg-primary hover:text-white shadow-sm border border-gray-200 transition">Mahaveer Nagar</button>
+                        <button onclick="filterByLocationQuick('Vigyan Nagar')" class="px-4 py-2 rounded-full text-xs font-semibold bg-white text-gray-700 hover:bg-primary hover:text-white shadow-sm border border-gray-200 transition">Vigyan Nagar</button>
+                        <button onclick="filterByLocationQuick('Dadabari')" class="px-4 py-2 rounded-full text-xs font-semibold bg-white text-gray-700 hover:bg-primary hover:text-white shadow-sm border border-gray-200 transition">Dadabari</button>
+                        <button onclick="filterByLocationQuick('Landmark City')" class="px-4 py-2 rounded-full text-xs font-semibold bg-white text-gray-700 hover:bg-primary hover:text-white shadow-sm border border-gray-200 transition">Landmark City</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Properties Grid -->
+            <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-primary">Handpicked Estates</span>
+                        <h2 class="text-3xl font-bold font-serif text-navy-800 mt-1">Featured Properties in Kota</h2>
+                    </div>
+                    <button onclick="switchPage('properties')" class="hidden sm:inline-flex items-center text-sm font-semibold text-primary hover:text-blue-700">
+                        View All Properties <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <div id="featured-properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Injected dynamically via JS -->
+                </div>
+
+                <div class="text-center mt-12 sm:hidden">
+                    <button onclick="switchPage('properties')" class="w-full py-3 bg-primary text-white font-semibold rounded-xl shadow">
+                        View All Properties
+                    </button>
+                </div>
+            </section>
+
+            <!-- Testimonials Carousel Section -->
+            <section class="py-16 bg-navy-900 text-white relative overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center mb-12">
+                        <span class="text-xs font-semibold uppercase tracking-widest text-gold-400">Client Stories</span>
+                        <h2 class="text-3xl font-bold font-serif mt-1">What Our Clients Say About Us</h2>
+                    </div>
+
+                    <div class="max-w-3xl mx-auto bg-white/5 border border-white/10 rounded-3xl p-8 sm:p-10 backdrop-blur-md relative shadow-2xl">
+                        <div class="absolute top-6 right-8 text-gold-500/30 text-6xl font-serif">“</div>
+                        <div id="testimonial-content" class="min-h-[140px] flex flex-col justify-between">
+                            <!-- Injected dynamically -->
+                        </div>
+                        <div class="flex justify-between items-center mt-8 pt-6 border-t border-white/10">
+                            <div class="flex space-x-2" id="testimonial-dots">
+                                <!-- Dots -->
+                            </div>
+                            <div class="flex space-x-3">
+                                <button onclick="prevTestimonial()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-gold-500 hover:text-navy-900 transition flex items-center justify-center text-white">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button onclick="nextTestimonial()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-gold-500 hover:text-navy-900 transition flex items-center justify-center text-white">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action Banner -->
+            <section class="py-16 bg-gradient-to-r from-primary to-blue-900 text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold font-serif mb-4">Ready to Buy, Sell or Rent in Kota?</h2>
+                    <p class="max-w-xl mx-auto text-blue-100 mb-8 text-sm sm:text-base">
+                        Get expert assistance from Mahvausnav Properties. We guarantee verified documents, transparent pricing, and seamless transactions.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="openEnquiryModal('Consultation Inquiry')" class="px-8 py-3.5 rounded-xl bg-gold-500 hover:bg-gold-600 text-navy-900 font-bold shadow-lg transition">
+                            Schedule Free Consultation
+                        </button>
+                        <a href="https://wa.me/919829012345" target="_blank" class="px-8 py-3.5 rounded-xl bg-white/10 hover:bg-white/25 text-white font-semibold border border-white/30 backdrop-blur-sm transition flex items-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+                            <span>Chat on WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- ================= PROPERTIES PAGE ================= -->
+        <section id="page-properties" class="page-view hidden animate-fade py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-8">
+                    <span class="text-xs font-bold uppercase tracking-wider text-primary">Inventory</span>
+                    <h1 class="text-3xl sm:text-4xl font-bold font-serif text-navy-800 mt-1">Property Listings in Kota</h1>
+                    <p class="text-gray-600 text-sm mt-1">Browse verified residential, commercial, plot, and rental listings across Kota.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    <!-- Filters Sidebar -->
+                    <div class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-sm border border-gray-200 space-y-6 h-fit">
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                            <h3 class="font-bold text-navy-800 flex items-center">
+                                <i class="fa-solid fa-filter mr-2 text-primary"></i> Filter Properties
+                            </h3>
+                            <button onclick="resetFilters()" class="text-xs text-primary font-semibold hover:underline">Reset All</button>
+                        </div>
+
+                        <!-- Search Text -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Search Keywords</label>
+                            <input type="text" id="filter-search" oninput="applyFilters()" placeholder="Title, locality, features..." class="w-full bg-surface border border-gray-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-primary outline-none">
+                        </div>
+
+                        <!-- Purpose -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Purpose</label>
+                            <select id="filter-purpose" onchange="applyFilters()" class="w-full bg-surface border border-gray-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-primary outline-none">
+                                <option value="">All Purposes</option>
+                                <option value="Buy">Buy</option>
+                                <option value="Rent">Rent</option>
+                            </select>
+                        </div>
+
+                        <!-- Property Type -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Property Type</label>
+                            <select id="filter-type" onchange="applyFilters()" class="w-full bg-surface border border-gray-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-primary outline-none">
+                                <option value="">All Types</option>
+                                <option value="Residential">Residential</option>
+                                <option value="Commercial">Commercial</option>
+                                <option value="Plots">Plots</option>
+                                <option value="Rental">Rental</option>
+                            </select>
+                        </div>
+
+                        <!-- Location -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Location in Kota</label>
+                            <select id="filter-location" onchange="applyFilters()" class="w-full bg-surface border border-gray-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-primary outline-none">
+                                <option value="">All Locations</option>
+                                <option value="Talwandi">Talwandi</option>
+                                <option value="Kunhari">Kunhari</option>
+                                <option value="Mahaveer Nagar">Mahaveer Nagar</option>
+                                <option value="Vigyan Nagar">Vigyan Nagar</option>
+                                <option value="Dadabari">Dadabari</option>
+                                <option value="Landmark City">Landmark City</option>
+                                <option value="Jawahar Nagar">Jawahar Nagar</option>
+                                <option value="Rajeev Gandhi Nagar">Rajeev Gandhi Nagar</option>
+                                <option value="Nayapura">Nayapura</option>
+                                <option value="Indra Vihar">Indra Vihar</option>
+                            </select>
+                        </div>
+
+                        <!-- Price Sorting -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-700 mb-1">Sort By Price</label>
+                            <select id="filter-sort" onchange="applyFilters()" class="w-full bg-surface border border-gray-200 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-primary outline-none">
+                                <option value="default">Default Order</option>
+                                <option value="low-high">Price: Low to High</option>
+                                <option value="high-low">Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Main Listing Grid -->
+                    <div class="lg:col-span-3 space-y-6">
+                        <!-- Result Bar -->
+                        <div class="flex justify-between items-center bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                            <span id="results-count" class="text-sm font-medium text-gray-600">Showing properties...</span>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500 font-medium">Kota Verified Portfolio</span>
+                            </div>
+                        </div>
+
+                        <!-- Properties Cards Grid -->
+                        <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Injected dynamically via JS -->
+                        </div>
+
+                        <!-- Empty State -->
+                        <div id="no-results" class="hidden text-center py-16 bg-white rounded-2xl border border-gray-200">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center text-gray-400 text-2xl">
+                                <i class="fa-solid fa-search"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-navy-800">No properties found</h3>
+                            <p class="text-sm text-gray-500 mt-1">Try adjusting your filters or search keywords.</p>
+                            <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-primary text-white text-sm font-medium rounded-xl shadow">Reset Filters</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SERVICES PAGE ================= -->
+        <section id="page-services" class="page-view hidden animate-fade py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-primary">What We Do</span>
+                    <h1 class="text-3xl sm:text-4xl font-bold font-serif text-navy-800 mt-1">Our Professional Services</h1>
+                    <p class="text-gray-600 mt-3 text-sm sm:text-base">Mahvausnav Properties provides end-to-end real estate solutions with unmatched local expertise in Kota, Rajasthan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-gray-200 transition group">
+                        <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+                            <i class="fa-solid fa-house-chimney-user"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-navy-800 mb-3">Property Buying</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Find your dream home, luxury villa, or strategic plot in premier Kota localities. We guide you from property tours to registry and legal verification.
+                        </p>
+                        <button onclick="openEnquiryModal('Property Buying Service')" class="text-sm font-semibold text-primary hover:text-blue-700 flex items-center">
+                            Enquire Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-gray-200 transition group">
+                        <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-gold-600 text-2xl mb-6 group-hover:bg-gold-500 group-hover:text-white transition">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-navy-800 mb-3">Property Selling</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Get the best valuation for your residential or commercial asset in Kota. We market your property across digital and offline channels to connect with verified buyers.
+                        </p>
+                        <button onclick="openEnquiryModal('Property Selling Service')" class="text-sm font-semibold text-primary hover:text-blue-700 flex items-center">
+                            Enquire Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-gray-200 transition group">
+                        <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 text-2xl mb-6 group-hover:bg-emerald-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-navy-800 mb-3">Property Rental</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Reliable rental solutions for students, coaching faculty, and working families in Kota. We handle agreements, verification, and tenant placement seamlessly.
+                        </p>
+                        <button onclick="openEnquiryModal('Property Rental Service')" class="text-sm font-semibold text-primary hover:text-blue-700 flex items-center">
+                            Enquire Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-gray-200 transition group">
+                        <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-building-shield"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-navy-800 mb-3">Commercial Properties</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            High-ROI commercial spaces, coaching institute buildings, showrooms, and retail hubs in prime commercial corridors like Talwandi and Rajeev Gandhi Nagar.
+                        </p>
+                        <button onclick="openEnquiryModal('Commercial Properties Service')" class="text-sm font-semibold text-primary hover:text-blue-700 flex items-center">
+                            Enquire Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Service 5 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-gray-200 transition group">
+                        <div class="w-14 h-14 bg-rose-50 rounded-xl flex items-center justify-center text-rose-600 text-2xl mb-6 group-hover:bg-rose-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-navy-800 mb-3">Property Consultation</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Expert advice on property valuation, market trends in Kota, legal paperwork verification, Vastu consultancy, and strategic real estate planning.
+                        </p>
+                        <button onclick="openEnquiryModal('Property Consultation Service')" class="text-sm font-semibold text-primary hover:text-blue-700 flex items-center">
+                            Enquire Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </button>
+                    </div>
+
+                    <!-- Service 6 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl border border-gray-200 transition group">
+                        <div class="w-14 h-14 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-600 text-2xl mb-6 group-hover:bg-cyan-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif text-navy-800 mb-3">Investment Assistance</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            Maximize your returns with high-appreciation land parcels, UIT approved schemes, and rental-yielding assets across growing sectors of Kota.
+                        </p>
+                        <button onclick="openEnquiryModal('Investment Assistance Service')" class="text-sm font-semibold text-primary hover:text-blue-700 flex items-center">
+                            Enquire Now <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT US PAGE ================= -->
+        <section id="page-about" class="page-view hidden animate-fade py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Company Story -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-primary">Established Excellence</span>
+                        <h1 class="text-3xl sm:text-4xl font-bold font-serif text-navy-800 mt-1 mb-6">About Mahvausnav Properties</h1>
+                        <p class="text-gray-600 leading-relaxed mb-4 text-sm sm:text-base">
+                            Headquartered in the educational and industrial hub of Kota, Rajasthan, <strong>Mahvausnav Properties</strong> has built an unwavering reputation for integrity, transparency, and deep local market expertise.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base">
+                            Whether you are looking for a peaceful residential villa in Talwandi, a student housing unit near coaching centers in Kunhari, or a high-yield commercial showroom, our dedicated team ensures your real estate journey is seamless and rewarding.
+                        </p>
+                        <div class="grid grid-cols-3 gap-6 pt-6 border-t border-gray-200">
+                            <div>
+                                <span class="block text-2xl sm:text-3xl font-extrabold text-primary font-serif">15+</span>
+                                <span class="text-xs text-gray-500 font-medium">Years Experience</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl sm:text-3xl font-extrabold text-gold-600 font-serif">1,200+</span>
+                                <span class="text-xs text-gray-500 font-medium">Properties Sold</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl sm:text-3xl font-extrabold text-navy-800 font-serif">98%</span>
+                                <span class="text-xs text-gray-500 font-medium">Happy Clients</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80" alt="Kota Real Estate Office" class="rounded-3xl shadow-2xl w-full object-cover h-[420px]">
+                        <div class="absolute -bottom-6 -left-6 bg-navy-900 text-white p-6 rounded-2xl shadow-xl hidden sm:block max-w-xs">
+                            <p class="text-xs text-gold-400 font-bold uppercase tracking-wider">Our Mission</p>
+                            <p class="text-sm mt-1 text-gray-300">To simplify property transactions in Kota with uncompromising honesty and professional excellence.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Choose Us -->
+                <div class="mb-20">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <span class="text-xs font-bold uppercase tracking-wider text-primary">Core Advantages</span>
+                        <h2 class="text-3xl font-bold font-serif text-navy-800 mt-1">Why Choose Mahvausnav Properties?</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary text-xl mb-4">
+                                <i class="fa-solid fa-map"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-800 mb-2">Local Market Knowledge</h3>
+                            <p class="text-gray-600 text-sm">Deep understanding of every micro-market in Kota, from coaching hubs to industrial zones.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-gold-600 text-xl mb-4">
+                                <i class="fa-solid fa-shield-check"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-800 mb-2">Verified Property Info</h3>
+                            <p class="text-gray-600 text-sm">All titles, UIT/JDA approvals, and legal documents thoroughly verified by experts.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                            <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 text-xl mb-4">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-800 mb-2">Personalized Assistance</h3>
+                            <p class="text-gray-600 text-sm">Dedicated relationship managers assigned to guide you through visits and paperwork.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                            <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 text-xl mb-4">
+                                <i class="fa-solid fa-arrows-split-up-and-left"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-800 mb-2">Buying & Selling Support</h3>
+                            <p class="text-gray-600 text-sm">End-to-end negotiation, documentation, bank loan assistance, and registry support.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                            <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center text-rose-600 text-xl mb-4">
+                                <i class="fa-solid fa-house-laptop"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-800 mb-2">Rental Assistance</h3>
+                            <p class="text-gray-600 text-sm">Quick tenant placement and hassle-free agreement execution for landlords and tenants.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                            <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center text-cyan-600 text-xl mb-4">
+                                <i class="fa-solid fa-comments-dollar"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-800 mb-2">Transparent Communication</h3>
+                            <p class="text-gray-600 text-sm">Zero hidden charges. Clear fee structures and straightforward negotiations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kota Locations Showcase -->
+                <div class="bg-gradient-to-br from-navy-900 to-navy-800 text-white rounded-3xl p-8 sm:p-12 shadow-xl">
+                    <div class="text-center max-w-2xl mx-auto mb-10">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-gold-400">Prime Coverage</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold font-serif mt-1">We Serve Across All Major Localities of Kota</h2>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <p class="font-bold text-gold-400">Talwandi</p>
+                            <p class="text-xs text-gray-300 mt-1">Residential & Coaching Hub</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <p class="font-bold text-gold-400">Kunhari</p>
+                            <p class="text-xs text-gray-300 mt-1">Student Hostels & Apartments</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <p class="font-bold text-gold-400">Mahaveer Nagar</p>
+                            <p class="text-xs text-gray-300 mt-1">Villas & Commercial Markets</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <p class="font-bold text-gold-400">Vigyan Nagar</p>
+                            <p class="text-xs text-gray-300 mt-1">Established Residential Area</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <p class="font-bold text-gold-400">Dadabari</p>
+                            <p class="text-xs text-gray-300 mt-1">Premium Riverside Living</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <p class="font-bold text-gold-400">Landmark City</p>
+                            <p class="text-xs text-gray-300 mt-1">Modern High-rise Apartments</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <p class="font-bold text-gold-400">Jawahar Nagar</p>
+                            <p class="text-xs text-gray-300 mt-1">Elite Bungalows</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                            <p class="font-bold text-gold-400">Rajeev Gandhi Nagar</p>
+                            <p class="text-xs text-gray-300 mt-1">Commercial & Cafes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT PAGE ================= -->
+        <section id="page-contact" class="page-view hidden animate-fade py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-xs font-bold uppercase tracking-wider text-primary">Get In Touch</span>
+                    <h1 class="text-3xl sm:text-4xl font-bold font-serif text-navy-800 mt-1">Contact Mahvausnav Properties</h1>
+                    <p class="text-gray-600 mt-3 text-sm sm:text-base">Have questions or ready to schedule a property visit in Kota? Reach out to our experts today.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Contact Info Cards -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary text-xl mb-6">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-800 mb-2">Phone & WhatsApp</h3>
+                            <p class="text-gray-600 text-sm mb-4">Speak directly with our property advisors.</p>
+                        </div>
+                        <div class="space-y-2">
+                            <a href="tel:+919829012345" class="block font-semibold text-primary hover:underline">+91 98290 12345</a>
+                            <a href="https://wa.me/919829012345" target="_blank" class="inline-flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full">
+                                <i class="fa-brands fa-whatsapp mr-1 text-base"></i> Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-gold-600 text-xl mb-6">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-800 mb-2">Email Address</h3>
+                            <p class="text-gray-600 text-sm mb-4">Send us your detailed requirement files.</p>
+                        </div>
+                        <div>
+                            <a href="mailto:info@mahvausnavproperties.com" class="font-semibold text-primary hover:underline">info@mahvausnavproperties.com</a>
+                            <p class="text-xs text-gray-400 mt-1">Response within 2 hours</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 text-xl mb-6">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-navy-800 mb-2">Office Address</h3>
+                            <p class="text-gray-600 text-sm mb-4">Visit our corporate office for a cup of tea and property discussions.</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-navy-800 text-sm">14-A, Shopping Centre, Talwandi,</p>
+                            <p class="font-semibold text-navy-800 text-sm">Kota, Rajasthan - 324005</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form & Map Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Interactive Contact Form -->
+                    <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-gray-200">
+                        <h3 class="text-2xl font-bold font-serif text-navy-800 mb-2">Send Us a Message</h3>
+                        <p class="text-gray-600 text-sm mb-6">Fill out the form below and our team will get back to you promptly.</p>
+                        
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1">Your Full Name *</label>
+                                <input type="text" id="contact-name" placeholder="Rajesh Sharma" class="w-full bg-surface border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary outline-none" required>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-700 mb-1">Phone Number *</label>
+                                    <input type="tel" id="contact-phone" placeholder="98290XXXXX" class="w-full bg-surface border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary outline-none" required>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-700 mb-1">Email Address</label>
+                                    <input type="email" id="contact-email" placeholder="rajesh@example.com" class="w-full bg-surface border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary outline-none">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1">Subject / Requirement</label>
+                                <select id="contact-subject" class="w-full bg-surface border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary outline-none">
+                                    <option value="Buying Property">Buying Property in Kota</option>
+                                    <option value="Selling Property">Selling Property</option>
+                                    <option value="Rental Inquiry">Rental / PG Inquiry</option>
+                                    <option value="Commercial Space">Commercial Space</option>
+                                    <option value="General Consultation">General Consultation</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-700 mb-1">Your Message *</label>
+                                <textarea id="contact-message" rows="4" placeholder="I am looking for a 3 BHK villa in Talwandi..." class="w-full bg-surface border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary outline-none" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-xl shadow transition">
+                                Send Enquiry
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Google Map Placeholder -->
+                    <div class="bg-white p-4 rounded-3xl shadow-sm border border-gray-200 flex flex-col">
+                        <div class="mb-4 px-2">
+                            <h3 class="text-xl font-bold font-serif text-navy-800">Our Location in Kota</h3>
+                            <p class="text-xs text-gray-500 mt-0.5">Talwandi Shopping Centre, Kota, Rajasthan</p>
+                        </div>
+                        <div class="flex-grow w-full h-[400px] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200 relative">
+                            <!-- Simulated Google Map Embed / Styled Placeholder -->
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.1782295624734!2d75.8577!3d25.1744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396f85244beea6ff%3A0x6b3f7902d338a0f9!2sTalwandi%2C%20Kota%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Property Details Modal -->
+    <div id="property-modal" class="fixed inset-0 z-50 bg-navy-900/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-fade relative">
+            <button onclick="closePropertyModal()" class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/80 hover:bg-white text-gray-800 rounded-full flex items-center justify-center shadow transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Enquiry Modal -->
+    <div id="enquiry-modal" class="fixed inset-0 z-50 bg-navy-900/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl animate-fade relative">
+            <button onclick="closeEnquiryModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="text-2xl font-bold font-serif text-navy-800 mb-1">Property Enquiry</h3>
+            <p id="enquiry-subtitle" class="text-xs text-gray-500 mb-6">Fill in your details for quick callback from Mahvausnav Properties.</p>
+            
+            <form onsubmit="handleModalEnquirySubmit(event)" class="space-y-4">
+                <input type="hidden" id="modal-prop-title">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Your Name *</label>
+                    <input type="text" id="modal-name" placeholder="Amit Sharma" class="w-full bg-surface border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary outline-none" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Phone Number *</label>
+                    <input type="tel" id="modal-phone" placeholder="98290XXXXX" class="w-full bg-surface border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary outline-none" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Message / Preferred Time</label>
+                    <textarea id="modal-msg" rows="3" placeholder="I would like to schedule a visit this weekend." class="w-full bg-surface border border-gray-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary outline-none"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-600 hover:to-gold-500 text-navy-900 font-bold py-3 px-6 rounded-xl shadow transition">
+                    Submit Enquiry
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-navy-900 text-white px-6 py-4 rounded-2xl shadow-2xl border border-gold-500/30 transform translate-y-32 opacity-0 transition-all duration-300 flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white">
+            <i class="fa-solid fa-check text-sm"></i>
+        </div>
+        <div>
+            <p id="toast-title" class="font-bold text-sm">Success!</p>
+            <p id="toast-msg" class="text-xs text-gray-300">Your request has been submitted successfully.</p>
+        </div>
+    </div>
+
+    <!-- Floating Back to Top Button -->
+    <button onclick="scrollToTop()" id="back-to-top" class="fixed bottom-6 left-6 z-40 bg-primary text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:bg-blue-700 focus:outline-none">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 text-gray-300 pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+                <!-- Col 1: Brand -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage('home')">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-blue-900 flex items-center justify-center text-gold-500">
+                            <i class="fa-solid fa-city text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-lg font-bold font-serif text-white block">Mahvausnav Properties</span>
+                            <span class="text-xs font-semibold tracking-widest text-gold-400 uppercase">Kota, Rajasthan</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed max-w-sm">
+                        Kota’s most dependable real estate agency offering residential villas, commercial showrooms, plots, and student housing with verified documentation and absolute transparency.
+                    </p>
+                    <div class="flex space-x-3 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold-500 hover:text-navy-900 transition flex items-center justify-center text-gray-300"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold-500 hover:text-navy-900 transition flex items-center justify-center text-gray-300"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold-500 hover:text-navy-900 transition flex items-center justify-center text-gray-300"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-gold-500 hover:text-navy-900 transition flex items-center justify-center text-gray-300"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><button onclick="switchPage('home')" class="hover:text-gold-400 transition">Home</button></li>
+                        <li><button onclick="switchPage('properties')" class="hover:text-gold-400 transition">Properties</button></li>
+                        <li><button onclick="switchPage('services')" class="hover:text-gold-400 transition">Services</button></li>
+                        <li><button onclick="switchPage('about')" class="hover:text-gold-400 transition">About Us</button></li>
+                        <li><button onclick="switchPage('contact')" class="hover:text-gold-400 transition">Contact Us</button></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Popular Localities -->
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Top Localities</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li><span onclick="switchPage('properties'); filterByLocationQuick('Talwandi')" class="cursor-pointer hover:text-gold-400">Talwandi</span></li>
+                        <li><span onclick="switchPage('properties'); filterByLocationQuick('Kunhari')" class="cursor-pointer hover:text-gold-400">Kunhari</span></li>
+                        <li><span onclick="switchPage('properties'); filterByLocationQuick('Mahaveer Nagar')" class="cursor-pointer hover:text-gold-400">Mahaveer Nagar</span></li>
+                        <li><span onclick="switchPage('properties'); filterByLocationQuick('Vigyan Nagar')" class="cursor-pointer hover:text-gold-400">Vigyan Nagar</span></li>
+                        <li><span onclick="switchPage('properties'); filterByLocationQuick('Landmark City')" class="cursor-pointer hover:text-gold-400">Landmark City</span></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Info -->
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Contact Info</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-location-dot text-gold-400 mt-1"></i>
+                            <span>14-A, Shopping Centre, Talwandi, Kota, Rajasthan - 324005</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-phone text-gold-400"></i>
+                            <span>+91 98290 12345</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-envelope text-gold-400"></i>
+                            <span>info@mahvausnavproperties.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-800 text-center text-xs text-gray-500 flex flex-col sm:flex-row justify-between items-center">
+                <p>&copy; 2026 Mahvausnav Properties. All rights reserved. Designed for Kota, Rajasthan.</p>
+                <p class="mt-2 sm:mt-0">UIT Approved & JDA Verified Listings</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Real Estate Property Database (6 Realistic Kota properties + more)
+        const propertiesData = [
+            {
+                id: 1,
+                title: "Luxurious 4 BHK Independent Villa",
+                type: "Residential",
+                purpose: "Buy",
+                location: "Talwandi",
+                price: 18500000,
+                priceFormatted: "₹1.85 Cr",
+                bedrooms: 4,
+                bathrooms: 4,
+                area: "2800 sq.ft.",
+                image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+                badge: "Featured",
+                description: "Stately independent duplex villa situated in the heart of Talwandi near coaching hubs and premier markets. Features premium Italian marble flooring, modular kitchen, landscaped lawn, and 100% clear UIT papers.",
+                amenities: ["Modular Kitchen", "Italian Marble", "Private Lawn", "Car Parking", "CCTV Security", "Power Backup"]
+            },
+            {
+                id: 2,
+                title: "Modern 2 BHK Student Apartment",
+                type: "Rental",
+                purpose: "Rent",
+                location: "Kunhari",
+                price: 18000,
+                priceFormatted: "₹18,000 / mo",
+                bedrooms: 2,
+                bathrooms: 2,
+                area: "950 sq.ft.",
+                image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80",
+                badge: "Popular for Students",
+                description: "Fully furnished 2 BHK apartment in Kunhari ideal for coaching students or small families. Walking distance to leading institutes, parks, and daily grocery stores.",
+                amenities: ["Fully Furnished", "AC Installed", "WiFi Ready", "24/7 Water", "Lift Access", "Security Guard"]
+            },
+            {
+                id: 3,
+                title: "Commercial Showroom Space",
+                type: "Commercial",
+                purpose: "Buy",
+                location: "Mahaveer Nagar",
+                price: 9500000,
+                priceFormatted: "₹95 Lakh",
+                bedrooms: 0,
+                bathrooms: 2,
+                area: "1200 sq.ft.",
+                image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+                badge: "High ROI",
+                description: "Prime ground-floor commercial showroom space facing the main Mahaveer Nagar thoroughfare. Excellent footfall, glass frontage, and dedicated customer parking.",
+                amenities: ["Glass Frontage", "Main Road Facing", "Washroom", "Ample Parking", "Fire Safety", "Commercial Title"]
+            },
+            {
+                id: 4,
+                title: "UIT Approved Residential Plot",
+                type: "Plots",
+                purpose: "Buy",
+                location: "Landmark City",
+                price: 3200000,
+                priceFormatted: "₹32 Lakh",
+                bedrooms: 0,
+                bathrooms: 0,
+                area: "1500 sq.ft.",
+                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+                badge: "East Facing",
+                description: "East-facing 30x50 residential plot in Landmark City, Kunhari extension. Well-developed colony with wide CC roads, street lights, water pipeline, and immediate registry.",
+                amenities: ["UIT Approved", "East Facing", "30ft Wide Road", "Boundary Wall", "Electricity", "Park Facing"]
+            },
+            {
+                id: 5,
+                title: "Spacious 3 BHK Family Builder Floor",
+                type: "Residential",
+                purpose: "Buy",
+                location: "Vigyan Nagar",
+                price: 6800000,
+                priceFormatted: "₹68 Lakh",
+                bedrooms: 3,
+                bathrooms: 3,
+                area: "1650 sq.ft.",
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                badge: "Ready to Move",
+                description: "Well-ventilated 3 BHK builder floor in Vigyan Nagar. Close to schools, temples, and markets. Features elegant false ceiling, wooden wardrobes, and piped gas connection.",
+                amenities: ["Modular Wardrobes", "False Ceiling", "Covered Parking", "Water Storage", "Intercom", "Boring Water"]
+            },
+            {
+                id: 6,
+                title: "Riverside Luxury 3 BHK Flat",
+                type: "Residential",
+                purpose: "Rent",
+                location: "Dadabari",
+                price: 25000,
+                priceFormatted: "₹25,000 / mo",
+                bedrooms: 3,
+                bathrooms: 3,
+                area: "1900 sq.ft.",
+                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+                badge: "Scenic View",
+                description: "Exquisite semi-furnished flat in Dadabari with serene views near Chambal riverfront gardens. Peaceful neighborhood with top-tier security and clubhouse amenities.",
+                amenities: ["Chambal View", "Clubhouse", "Gymnasium", "Swimming Pool", "24/7 Security", "Reserved Parking"]
+            }
+        ];
+
+        // Testimonials Data
+        const testimonialsData = [
+            {
+                quote: "Mahvausnav Properties helped us secure our dream villa in Talwandi without any hassle. Their knowledge of Kota's legal paperwork and UIT norms is top-notch!",
+                name: "Dr. R. K. Sharma",
+                role: "Senior Physician, Kota"
+            },
+            {
+                quote: "As an investor, I was looking for commercial spaces in Mahaveer Nagar. The team gave genuine advice and ensured a smooth registry process. Highly recommended!",
+                name: "Manish Vijayvargiya",
+                role: "Business Owner"
+            },
+            {
+                quote: "Finding a student rental in Kunhari was so easy through Mahvausnav Properties. Professional staff and completely transparent dealing.",
+                name: "Pooja Maheshwari",
+                role: "Parent from Jaipur"
+            }
+        ];
+
+        let currentTestimonialIndex = 0;
+
+        // Initialize application on load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderFeaturedProperties();
+            renderPropertiesGrid(propertiesData);
+            renderTestimonial();
+            setupTestimonialDots();
+
+            // Scroll listener for back-to-top & sticky navbar shadow
+            window.addEventListener('scroll', () => {
+                const btt = document.getElementById('back-to-top');
+                if (window.scrollY > 300) {
+                    btt.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    btt.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+        });
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Switch Page View (SPA navigation simulation)
+        function switchPage(pageId) {
+            const views = document.querySelectorAll('.page-view');
+            views.forEach(v => v.classList.add('hidden'));
+
+            const targetView = document.getElementById(`page-${pageId}`);
+            if (targetView) {
+                targetView.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update active state in navbar
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-target') === pageId) {
+                    link.classList.add('text-primary', 'bg-blue-50');
+                    link.classList.remove('text-gray-600', 'hover:text-primary', 'hover:bg-gray-50');
+                } else {
+                    link.classList.remove('text-primary', 'bg-blue-50');
+                    link.classList.add('text-gray-600', 'hover:text-primary', 'hover:bg-gray-50');
+                }
+            });
+        }
+
+        // Render Featured Properties on Home page
+        function renderFeaturedProperties() {
+            const grid = document.getElementById('featured-properties-grid');
+            const featured = propertiesData.slice(0, 3);
+            grid.innerHTML = featured.map(p => createPropertyCardHTML(p)).join('');
+        }
+
+        // Render Property Card HTML
+        function createPropertyCardHTML(p) {
+            return `
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-200 overflow-hidden transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-56 overflow-hidden bg-gray-100">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/1D4ED8/FFFFFF?text=Mahvausnav+Properties'">
+                            <div class="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                                ${p.purpose}
+                            </div>
+                            <div class="absolute top-3 right-3 bg-gold-500 text-navy-900 text-xs font-bold px-3 py-1 rounded-full shadow">
+                                ${p.badge}
+                            </div>
+                            <div class="absolute bottom-3 left-3 bg-navy-900/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-lg">
+                                <i class="fa-solid fa-location-dot text-gold-400 mr-1"></i> ${p.location}, Kota
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-2xl font-bold font-serif text-navy-800 mb-2">${p.priceFormatted}</div>
+                            <h3 class="font-bold text-lg text-gray-800 mb-2 line-clamp-1">${p.title}</h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 mb-4">${p.description}</p>
+                            <div class="flex items-center justify-between text-xs text-gray-600 pt-4 border-t border-gray-100">
+                                ${p.bedrooms > 0 ? `<span><i class="fa-solid fa-bed text-primary mr-1"></i> ${p.bedrooms} Beds</span>` : `<span><i class="fa-solid fa-store text-primary mr-1"></i> Commercial</span>`}
+                                ${p.bathrooms > 0 ? `<span><i class="fa-solid fa-bath text-primary mr-1"></i> ${p.bathrooms} Baths</span>` : ``}
+                                <span><i class="fa-solid fa-vector-square text-primary mr-1"></i> ${p.area}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex space-x-2">
+                        <button onclick="openPropertyModal(${p.id})" class="flex-1 bg-gray-100 hover:bg-primary hover:text-white text-gray-800 text-sm font-semibold py-2.5 rounded-xl transition">
+                            View Details
+                        </button>
+                        <a href="https://wa.me/919829012345?text=Hi,%20I%20am%20interested%20in%20property:%20${encodeURIComponent(p.title)}%20(${p.priceFormatted})" target="_blank" class="w-11 h-11 bg-emerald-50 hover:bg-emerald-600 hover:text-white text-emerald-600 rounded-xl flex items-center justify-center transition shadow-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render Properties Page Grid
+        function renderPropertiesGrid(list) {
+            const grid = document.getElementById('properties-grid');
+            const noResults = document.getElementById('no-results');
+            const countLbl = document.getElementById('results-count');
+
+            countLbl.innerText = `Showing ${list.length} verified properties in Kota`;
+
+            if (list.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                grid.innerHTML = list.map(p => createPropertyCardHTML(p)).join('');
+            }
+        }
+
+        // Hero Search execution -> Switch to properties & filter
+        function executeHeroSearch() {
+            const purpose = document.getElementById('hero-purpose').value;
+            const location = document.getElementById('hero-location').value;
+
+            switchPage('properties');
+
+            document.getElementById('filter-purpose').value = purpose;
+            document.getElementById('filter-location').value = location;
+            document.getElementById('filter-search').value = '';
+            document.getElementById('filter-type').value = '';
+
+            applyFilters();
+        }
+
+        // Filter by Category from Home cards
+        function filterByCategory(category) {
+            switchPage('properties');
+            document.getElementById('filter-type').value = category;
+            document.getElementById('filter-purpose').value = '';
+            document.getElementById('filter-location').value = '';
+            document.getElementById('filter-search').value = '';
+            applyFilters();
+        }
+
+        // Filter by Quick Location badges
+        function filterByLocationQuick(loc) {
+            switchPage('properties');
+            document.getElementById('filter-location').value = loc;
+            document.getElementById('filter-purpose').value = '';
+            document.getElementById('filter-type').value = '';
+            document.getElementById('filter-search').value = '';
+            applyFilters();
+        }
+
+        // Advanced Filtering Logic on Properties page
+        function applyFilters() {
+            const searchTxt = document.getElementById('filter-search').value.toLowerCase();
+            const purpose = document.getElementById('filter-purpose').value;
+            const type = document.getElementById('filter-type').value;
+            const location = document.getElementById('filter-location').value;
+            const sort = document.getElementById('filter-sort').value;
+
+            let filtered = propertiesData.filter(p => {
+                const matchSearch = p.title.toLowerCase().includes(searchTxt) || p.description.toLowerCase().includes(searchTxt) || p.location.toLowerCase().includes(searchTxt);
+                const matchPurpose = purpose === "" || p.purpose === purpose;
+                const matchType = type === "" || p.type === type;
+                const matchLocation = location === "" || p.location === location;
+                return matchSearch && matchPurpose && matchType && matchLocation;
+            });
+
+            // Sorting
+            if (sort === 'low-high') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sort === 'high-low') {
+                filtered.sort((a, b) => b.price - a.price);
+            }
+
+            renderPropertiesGrid(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('filter-search').value = '';
+            document.getElementById('filter-purpose').value = '';
+            document.getElementById('filter-type').value = '';
+            document.getElementById('filter-location').value = '';
+            document.getElementById('filter-sort').value = 'default';
+            renderPropertiesGrid(propertiesData);
+        }
+
+        // Property Details Modal
+        function openPropertyModal(id) {
+            const p = propertiesData.find(item => item.id === id);
+            if (!p) return;
+
+            const modalBody = document.getElementById('modal-body');
+            modalBody.innerHTML = `
+                <div class="relative h-72 sm:h-80 bg-gray-100">
+                    <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                        ${p.purpose} - ${p.type}
+                    </div>
+                </div>
+                <div class="p-6 sm:p-8">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-gold-600 uppercase tracking-widest"><i class="fa-solid fa-location-dot mr-1"></i> ${p.location}, Kota</span>
+                            <h2 class="text-2xl font-bold font-serif text-navy-800 mt-1">${p.title}</h2>
+                        </div>
+                        <div class="text-2xl font-extrabold text-primary font-serif mt-2 sm:mt-0">${p.priceFormatted}</div>
+                    </div>
+
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">${p.description}</p>
+
+                    <div class="grid grid-cols-3 gap-4 p-4 bg-surface rounded-2xl border border-gray-200 mb-6 text-center">
+                        <div>
+                            <span class="block text-xs text-gray-500">Bedrooms</span>
+                            <span class="font-bold text-navy-800">${p.bedrooms > 0 ? p.bedrooms : 'N/A'}</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-gray-500">Bathrooms</span>
+                            <span class="font-bold text-navy-800">${p.bathrooms > 0 ? p.bathrooms : 'N/A'}</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-gray-500">Super Area</span>
+                            <span class="font-bold text-navy-800">${p.area}</span>
+                        </div>
+                    </div>
+
+                    <h4 class="font-bold text-navy-800 mb-3 text-sm uppercase tracking-wider">Amenities & Highlights</h4>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        ${p.amenities.map(a => `<span class="bg-blue-50 text-primary text-xs font-semibold px-3 py-1.5 rounded-lg"><i class="fa-solid fa-check mr-1 text-gold-500"></i> ${a}</span>`).join('')}
+                    </div>
+
+                    <div class="flex space-x-3">
+                        <button onclick="closePropertyModal(); openEnquiryModal('${p.title}');" class="flex-1 bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl shadow transition text-center">
+                            Enquire About This Property
+                        </button>
+                        <a href="https://wa.me/919829012345?text=Hi,%20I%20want%20to%20schedule%20a%20site%20visit%20for%20property:%20${encodeURIComponent(p.title)}" target="_blank" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow transition flex items-center justify-center">
+                            <i class="fa-brands fa-whatsapp text-lg mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('property-modal').classList.remove('hidden');
+            document.getElementById('property-modal').classList.add('flex');
+        }
+
+        function closePropertyModal() {
+            document.getElementById('property-modal').classList.add('hidden');
+            document.getElementById('property-modal').classList.remove('flex');
+        }
+
+        // Enquiry Modal
+        function openEnquiryModal(subtitleText) {
+            document.getElementById('modal-prop-title').value = subtitleText;
+            document.getElementById('enquiry-subtitle').innerText = `Enquiring about: ${subtitleText}`;
+            document.getElementById('enquiry-modal').classList.remove('hidden');
+            document.getElementById('enquiry-modal').classList.add('flex');
+        }
+
+        function closeEnquiryModal() {
+            document.getElementById('enquiry-modal').classList.add('hidden');
+            document.getElementById('enquiry-modal').classList.remove('flex');
+        }
+
+        // Testimonial Carousel logic
+        function renderTestimonial() {
+            const t = testimonialsData[currentTestimonialIndex];
+            const container = document.getElementById('testimonial-content');
+            container.innerHTML = `
+                <p class="text-gray-200 text-base sm:text-lg italic mb-6 leading-relaxed">"${t.quote}"</p>
+                <div>
+                    <h4 class="font-bold text-white text-base">${t.name}</h4>
+                    <p class="text-xs text-gold-400 font-medium">${t.role}</p>
+                </div>
+            `;
+            updateTestimonialDots();
+        }
+
+        function setupTestimonialDots() {
+            const dotsContainer = document.getElementById('testimonial-dots');
+            dotsContainer.innerHTML = testimonialsData.map((_, i) => `
+                <button onclick="setTestimonial(${i})" class="w-3 h-3 rounded-full transition ${i === currentTestimonialIndex ? 'bg-gold-500 w-8' : 'bg-white/30'}"></button>
+            `).join('');
+        }
+
+        function updateTestimonialDots() {
+            setupTestimonialDots();
+        }
+
+        function nextTestimonial() {
+            currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonialsData.length;
+            renderTestimonial();
+        }
+
+        function prevTestimonial() {
+            currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonialsData.length) % testimonialsData.length;
+            renderTestimonial();
+        }
+
+        function setTestimonial(i) {
+            currentTestimonialIndex = i;
+            renderTestimonial();
+        }
+
+        // Form validation & Success Toast
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value.trim();
+            const phone = document.getElementById('contact-phone').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+
+            if (!name || !phone || !message) {
+                showToast("Error", "Please fill in all required fields.", "bg-rose-600");
+                return;
+            }
+
+            showToast("Enquiry Submitted!", "Thank you. Our Kota property expert will call you within 2 hours.");
+            document.getElementById('contact-form').reset();
+        }
+
+        function handleModalEnquirySubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('modal-name').value.trim();
+            const phone = document.getElementById('modal-phone').value.trim();
+
+            if (!name || !phone) {
+                showToast("Error", "Please fill in your name and phone number.", "bg-rose-600");
+                return;
+            }
+
+            closeEnquiryModal();
+            showToast("Callback Requested!", "We have received your request and will contact you shortly.");
+        }
+
+        function showToast(title, msg, bgClass = "bg-navy-900") {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-msg').innerText = msg;
+            
+            toast.className = `fixed bottom-6 right-6 z-50 text-white px-6 py-4 rounded-2xl shadow-2xl border border-gold-500/30 transform transition-all duration-300 flex items-center space-x-3 ${bgClass}`;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
